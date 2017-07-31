@@ -1,0 +1,10 @@
+<!-- This is a template page based on Django Template Language (DTL) -->
+{% extends 'base.html' %}
+
+<!-- Override block named 'title' in parent template -->
+{% block title %}The current datetime{% endblock %}
+
+<!-- Override block named 'content' in parent template -->
+{% block content %}
+<p>It is now {{ current_date }}</p>
+{% endblock %}
