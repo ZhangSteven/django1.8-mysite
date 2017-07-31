@@ -17,6 +17,7 @@ from django.contrib import admin
 from mysite.views import hello, current_datetime, hours_ahead, \
                             current_datetime2, current_datetime3, \
                             current_datetime4, hours_ahead2
+from books.views import book_list
 
 
 
@@ -29,4 +30,6 @@ urlpatterns = [
     url(r'^time/$', current_datetime4),
     # url(r'^time/plus/(\d{1,2})/$', hours_ahead),
     url(r'^time/plus/(\d{1,2})/$', hours_ahead2),
+
+    url(r'^books/book-list/$', book_list)
 ]
