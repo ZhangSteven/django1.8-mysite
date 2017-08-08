@@ -92,8 +92,8 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 
 # TIME_ZONE = 'UTC'
-# set to Asia/Shanghai
-TIME_ZONE = 'MN'
+# TIME_ZONE = 'MN'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
