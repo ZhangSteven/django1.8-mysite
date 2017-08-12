@@ -82,3 +82,6 @@ def hours_ahead2(request, offset):
 	# assert False
 	return render(request, 'hours_ahead.html',
 				{'hours':offset, 'future_date':dt+timedelta(hours=offset)})
+
+
+		

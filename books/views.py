@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import Book
+from .forms import ContactForm
 
 # Create your views here.
 def book_list(request):
@@ -66,3 +68,30 @@ def search3(request):
 			return render(request, 'search_result.html', {'books':books, 'query':q})
 
 	return render(request, 'search_form3.html', {'errors': errors})
+
+
+
+def contact(request):
+	if request.method == 'GET':
+		# give some default values to the form fields
+		form = ContactForm(
+				initial={'subject':'What a lovely site!'}
+			)
+		return render(request, 'contact_form.html', {'form':form})
+		
+	elif request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			# do some processing here
+			# cd = form.cleaned_data
+			# send_mail(cd ...)
+			return HttpResponseRedirect('/contact/thanks/')
+		else:
+			return HttpResponse('<html><body><h1>Ooops, something is wrong</h1></body></html>')
+	else:
+		raise Http404()
+
+
+
+def contact_thankyou(request):
+	return render(request, 'contact_thankyou.html', {})

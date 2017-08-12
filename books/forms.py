@@ -1,0 +1,9 @@
+# All forms class for the Book app goes here.
+from django import forms
+
+
+
+class ContactForm(forms.Form):
+	subject = forms.CharField()
+	email = forms.EmailField(required=False)
+	message = forms.CharField(widget=forms.Textarea)
