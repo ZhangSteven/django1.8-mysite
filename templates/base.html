@@ -8,11 +8,16 @@
 </head>
 
 <body>
+	<!-- a block named 'heading' -->
+	{% block heading %}
 	<h1>My helpful timestamp site</h1>
-	<!-- The second block, named 'content' -->
+	{% endblock %}
+	
+
+	<!-- a block named 'content' -->
 	{% block content %}{% endblock %}
 
-	<!-- The third block, named 'footer', with default content -->
+	<!-- a block named 'footer', with default content -->
 	{% block footer %}
 	<hr>
 	<p>Thanks for visiting my site.</p>

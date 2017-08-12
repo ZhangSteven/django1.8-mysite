@@ -1,0 +1,24 @@
+<!-- This is a template page based on Django Template Language (DTL) -->
+{% extends 'base.html' %}
+
+<!-- Override block named 'title' in parent template -->
+{% block title %}Book List{% endblock %}
+
+{% block heading %}
+<h1>The books site</h1>
+{% endblock %}
+
+<!-- Override block named 'content' in parent template -->
+{% block content %}
+<p>Found {{ books|length }} book{{ books|pluralize }}</p>
+<ul>
+	{% for book in books %}
+	<li>{{ book.title }}, {{ book.publisher }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
+
+{% block footer %}
+<hr>
+<p>The book list for now</p>
+{% endblock %}

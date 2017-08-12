@@ -14,22 +14,23 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from mysite.views import hello, current_datetime, hours_ahead, \
-                            current_datetime2, current_datetime3, \
-                            current_datetime4, hours_ahead2
-from books.views import book_list
+
+# from mysite.views import hello, current_datetime, hours_ahead, \
+#                             current_datetime2, current_datetime3, \
+#                             current_datetime4, hours_ahead2
+from mysite import views
+import books.views
 
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^hello/$', hello),
+    url(r'^hello/$', views.hello),
     # url(r'^time/$', current_datetime),
     # url(r'^time/$', current_datetime2),
     # url(r'^time/$', current_datetime3),
-    url(r'^time/$', current_datetime4),
+    url(r'^time/$', views.current_datetime4),
     # url(r'^time/plus/(\d{1,2})/$', hours_ahead),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead2),
-
-    url(r'^books/book-list/$', book_list)
+    url(r'^time/plus/(\d{1,2})/$', views.hours_ahead2),
+    url(r'^books/$', books.views.book_list)
 ]

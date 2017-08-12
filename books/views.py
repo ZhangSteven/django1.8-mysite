@@ -1,10 +1,10 @@
 from django.shortcuts import render
+from .models import Book
 
 # Create your views here.
 def book_list(request):
 	"""
 	Use the shortcut render() function to do template rendering.
 	"""
-	dt = datetime.now()
 	return render(request, 'book_list.html',
-					{'current_date':dt})
+					{'books':Book.objects.all()})
