@@ -5,23 +5,23 @@
 {% block title %}Book List{% endblock %}
 
 {% block heading %}
-<h1>The Books Site</h1>
+	<h1>The Books Site</h1>
 {% endblock %}
 
 <!-- Override block named 'content' in parent template -->
 {% block content %}
-<p>You searched for: <strong>{{ query }}</strong></p>
+	<p>You searched for: <strong>{{ query }}</strong></p>
 
-{% if books %}
-	<p>Found {{ books|length }} book{{ books|pluralize }}</p>
-	<ul>
-		{% for book in books %}
-		<li>{{ book.title }}, {{ book.publisher }}</li>
-		{% endfor %}
-	</ul>
-{% else %}
-	<p>No books matched your search criteria</p>
-{% endif %}
+	{% if books %}
+		<p>Found {{ books|length }} book{{ books|pluralize }}</p>
+		<ul>
+			{% for book in books %}
+			<li>{{ book.title }}, {{ book.publisher }}</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No books matched your search criteria</p>
+	{% endif %}
 {% endblock %}
 
 {% block footer %}

@@ -36,5 +36,8 @@ urlpatterns = [
 
     # url(r'^search_form/$', books.views.search_form),
     # url(r'^search/$', books.views.search),
-    url(r'^search/$', books.views.search2),
+
+    # url(r'^search/$', books.views.search2),   # combine form and result
+
+    url(r'^search/$', books.views.search3),   # display custom error messages
 ]

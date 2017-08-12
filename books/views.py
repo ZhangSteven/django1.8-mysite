@@ -45,3 +45,24 @@ def search2(request):
 			error = True
 
 	return render(request, 'search_form.html', {'error': error})
+
+
+
+def search3(request):
+	# An improved search view, where it can:
+	# 1. Serve the search form if parameter 'q' is not there,
+	# 2. Serve the search form with custom error messages if 'q' is empty,
+	# 3. Serve the search result
+	
+	errors = []	# instead of using a Boolean, using a message list
+	if 'q' in request.GET:
+		q = request.GET['q']
+		if q == '':
+			errors.append('Search query cannot be empty.')
+		elif len(q) > 20:
+			errors.append('Search query must be less than 20 characters')
+		else:
+			books = Book.objects.filter(title__icontains=q)
+			return render(request, 'search_result.html', {'books':books, 'query':q})
+
+	return render(request, 'search_form3.html', {'errors': errors})

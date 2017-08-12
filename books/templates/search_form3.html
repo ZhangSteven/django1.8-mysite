@@ -1,0 +1,26 @@
+<!-- To be used with search3 view function -->
+<!-- This is a template page based on Django Template Language (DTL) -->
+{% extends 'base.html' %}
+
+<!-- Override block named 'title' in parent template -->
+{% block title %}Search form{% endblock %}
+
+{% block heading %}
+	<h1>The Books Site</h1>
+{% endblock %}
+
+<!-- Override block named 'content' in parent template -->
+{% block content %}
+
+	{% if errors %}
+		<ul>
+			{% for error in errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	<form action="/search", method="GET">
+		<input type="text", name="q">
+		<input type="submit", name="Search">
+	</form>
+{% endblock %}
