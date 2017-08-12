@@ -26,3 +26,22 @@ def search(request):
 def search_form(request):
 	# display the search form
 	return render(request, 'search_form.html', {'error': False})
+
+
+
+
+def search2(request):
+	# An improved search view, where it can:
+	# 1. Serve the search form if parameter 'q' is not there,
+	# 2. Serve the search form with an error if 'q' is empty,
+	# 3. Serve the search result
+	error = False
+	if 'q' in request.GET:
+		q = request.GET['q']
+		if q != '':
+			books = Book.objects.filter(title__icontains=q)
+			return render(request, 'search_result.html', {'books':books, 'query':q})
+		else:
+			error = True
+
+	return render(request, 'search_form.html', {'error': error})

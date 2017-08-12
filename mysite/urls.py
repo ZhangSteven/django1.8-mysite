@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^time/plus/(\d{1,2})/$', views.hours_ahead2),
     url(r'^books/$', books.views.book_list),
 
-    url(r'^search_form/$', books.views.search_form),
-    url(r'^search/$', books.views.search),
+    # url(r'^search_form/$', books.views.search_form),
+    # url(r'^search/$', books.views.search),
+    url(r'^search/$', books.views.search2),
 ]

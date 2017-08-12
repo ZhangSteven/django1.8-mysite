@@ -10,13 +10,11 @@
 
 <!-- Override block named 'content' in parent template -->
 {% block content %}
+{% if error %}
+<p>The search query cannot be empty.</p>
+{% endif %}
 <form action="/search", method="GET">
 	<input type="text", name="q">
 	<input type="submit", name="Search">
 </form>
-{% endblock %}
-
-{% block footer %}
-<hr>
-<p>The book list for now</p>
 {% endblock %}
