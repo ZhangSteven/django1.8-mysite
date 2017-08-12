@@ -25,7 +25,8 @@ SECRET_KEY = 'on6!=#xo!)-jj1k71_s$hvx+uc8lq786yoe(506i9lp%_ikuh0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# The host/domain names that this Django site can serve
+ALLOWED_HOSTS = ['report.clamc.com.hk', 'localhost']
 
 
 # Application definition
@@ -92,8 +93,8 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 
 # TIME_ZONE = 'UTC'
-# set to Asia/Shanghai
-TIME_ZONE = 'MN'
+# TIME_ZONE = 'MN'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
