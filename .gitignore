@@ -1,2 +1,3 @@
 # no complied python modules
 */__pycache__/*
+*.pyc
