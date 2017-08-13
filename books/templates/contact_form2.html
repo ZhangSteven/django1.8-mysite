@@ -36,6 +36,8 @@
 			<div>
 				<!-- below is the same as an empty string if no errors, otherwise <ul class="errorlist"><li>xxxx</li></ul> -->
 				{{ form.subject.errors }}
+
+				<!-- here the id field "id_subject" comes from django's default handling. In a shell environment, when you do print(form.as_table), you will see the id for field "subject" is "id_subject", etc. -->
 				<label for="id_subject">Subject:</label>
 
 				<!-- below is the same as <input id="id_subject" name="subject" type="email" /> -->
