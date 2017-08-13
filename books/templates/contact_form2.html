@@ -1,0 +1,63 @@
+<!-- This is a template page based on Django Template Language (DTL) -->
+{% extends 'base.html' %}
+
+<!-- Override block named 'title' in parent template -->
+{% block title %}Contact Form{% endblock %}
+
+{% block heading %}
+<h1>Contact Us</h1>
+{% endblock %}
+
+<!-- for the errorlist display (form.subject.errors etc.) -->
+<!-- But put it here doesn't work, why? -->
+<style type="text/css">
+	ul.errorlist {
+		margin: 0;
+		padding: 0;
+	}
+	.errorlist li {
+		background-color: red;
+		color: white;
+		display: block;
+		font-size: 10px;
+		margin: 0 0 3px;
+		padding: 4px 5px;
+	}
+</style>
+
+<!-- Override block named 'content' in parent template -->
+{% block content %}
+	{% if form.errors %}
+		<p style="color: red;">Error{{ form.errors|pluralize }} occurred.</p>
+	{% endif %}
+
+	<form action="" method="POST">
+		<table>
+			<div>
+				<!-- below is the same as an empty string if no errors, otherwise <ul class="errorlist"><li>xxxx</li></ul> -->
+				{{ form.subject.errors }}
+				<label for="id_subject">Subject:</label>
+
+				<!-- below is the same as <input id="id_subject" name="subject" type="email" /> -->
+				{{ form.subject }}
+			</div><br>
+
+			<div>
+				{{ form.email.errors }}
+				<label for="id_email">You email address:</label>
+				{{ form.email }}
+			</div><br>
+
+			<div>
+				{{ form.message.errors }}
+				<label for="id_message">Message:</label>
+				{{ form.message }}
+			</div><br>
+
+		</table>
+
+		<!-- Must be included, otherwise 403 forbidden -->
+		{% csrf_token %}
+		<input type="submit" value="submit">
+	</form>
+{% endblock %}

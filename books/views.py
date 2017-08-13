@@ -73,11 +73,15 @@ def search3(request):
 
 def contact(request):
 	if request.method == 'GET':
-		# give some default values to the form fields
+		# an empty form
+		# form = ContactForm()
+
+		# a form with some pre-populated values to the fields
 		form = ContactForm(
 				initial={'subject':'What a lovely site!'}
 			)
-		return render(request, 'contact_form.html', {'form':form})
+		# return render(request, 'contact_form.html', {'form':form})
+		return render(request, 'contact_form2.html', {'form':form})
 		
 	elif request.method == 'POST':
 		form = ContactForm(request.POST)
@@ -88,6 +92,31 @@ def contact(request):
 			return HttpResponseRedirect('/contact/thanks/')
 		else:
 			return HttpResponse('<html><body><h1>Ooops, something is wrong</h1></body></html>')
+	else:
+		raise Http404()
+
+
+
+def contact2(request):
+	if request.method == 'GET':
+		# an empty form
+		# form = ContactForm()
+
+		# a form with some pre-populated values to the fields
+		form = ContactForm(
+				initial={'subject':'What a lovely site!'}
+			)
+		return render(request, 'contact_form2.html', {'form':form})
+		
+	elif request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			# do some processing here
+			# cd = form.cleaned_data
+			# send_mail(cd ...)
+			return HttpResponseRedirect('/contact/thanks/')
+		else:
+			return render(request, 'contact_form2.html', {'form':form})
 	else:
 		raise Http404()
 

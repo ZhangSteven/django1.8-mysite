@@ -40,6 +40,9 @@ urlpatterns = [
     # url(r'^search/$', books.views.search2),   # combine form and result
 
     url(r'^search/$', books.views.search3),   # display custom error messages
-    url(r'^contact/$', books.views.contact),
+    # url(r'^contact/$', books.views.contact),  # a simple contact form example
+
+    url(r'^contact/$', books.views.contact2),   # display errors on the form 
+                                                # directly if validation fails
     url(r'^contact/thanks/$', books.views.contact_thankyou),
 ]
