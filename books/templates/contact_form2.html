@@ -8,23 +8,6 @@
 <h1>Contact Us</h1>
 {% endblock %}
 
-<!-- for the errorlist display (form.subject.errors etc.) -->
-<!-- But put it here doesn't work, why? -->
-<style type="text/css">
-	ul.errorlist {
-		margin: 0;
-		padding: 0;
-	}
-	.errorlist li {
-		background-color: red;
-		color: white;
-		display: block;
-		font-size: 10px;
-		margin: 0 0 3px;
-		padding: 4px 5px;
-	}
-</style>
-
 <!-- Override block named 'content' in parent template -->
 {% block content %}
 	{% if form.errors %}
@@ -35,6 +18,7 @@
 		<table>
 			<div>
 				<!-- below is the same as an empty string if no errors, otherwise <ul class="errorlist"><li>xxxx</li></ul> -->
+				<!-- The css style is in base.html -->
 				{{ form.subject.errors }}
 
 				<!-- here the id field "id_subject" comes from django's default handling. In a shell environment, when you do print(form.as_table), you will see the id for field "subject" is "id_subject", etc. -->
