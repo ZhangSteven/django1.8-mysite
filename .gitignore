@@ -1,3 +1,11 @@
 # no complied python modules
 */__pycache__/*
 *.pyc
+
+# ignore the log files
+*.log
+*.log.1
+*.log.2
+*.log.3
+*.log.4
+*.log.5

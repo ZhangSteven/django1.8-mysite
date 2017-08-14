@@ -107,3 +107,67 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# logging configuration
+# 
+# skeleton is from https://stackoverflow.com/a/7045981
+# logging format and log file location is slightly different
+# 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
+            'datefmt': '%d/%b/%Y %H:%M:%S'
+        },
+    },
+
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
+        },
+
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+
+            # must be a location where the Django process has write permission
+            'filename': r'C:\Users\steven.zhang\envs\mysite\mysite\mysite.log',
+            'maxBytes': 1024*1024*5,    # 5MB
+            'backupCount': 5,           # mysite.log.1, ... mysite.log.5
+            'formatter': 'standard',
+        },
+
+        'console': {
+            'level': 'WARN',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARN',
+        },
+
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+
+        # This allows us to observe logging in two places:
+        # 1. The console with warning messages (console's logging level)
+        # 2. The log file with debug messages (file's logging level)
+        'my apps': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+    }
+}
