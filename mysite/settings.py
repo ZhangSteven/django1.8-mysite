@@ -136,7 +136,7 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
 
             # must be a location where the Django process has write permission
-            'filename': r'C:\Users\steven.zhang\envs\mysite\mysite\mysite.log',
+            'filename': os.path.join(BASE_DIR, 'mysite.log'),
             'maxBytes': 1024*1024*5,    # 5MB
             'backupCount': 5,           # mysite.log.1, ... mysite.log.5
             'formatter': 'standard',
